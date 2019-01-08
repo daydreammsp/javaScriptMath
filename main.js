@@ -1,10 +1,23 @@
-let v1 = new vector(10, 5),
-    v2 = new vector(3,4);
+window.onload = function(){
+    let canvas = document.getElementById("canvas"),
+        context = canvas.getContext('2d');
+        width = canvas.width = window.innerWidth,
+        height = canvas.height = window.innerHeight,
+        p = new particle(100,100,3,Math.PI /6);
 
-v1.addTo(v2);
+        
 
-console.log(v1.getX(), v1.getY());
+        update();
 
-
+        function update(){
+            context.clearRect(0,0,width,height);
+            
+            p.update();
+            context.beginPath();
+            context.arc(p.position.getX(), p.position.getY(), 10, 0, Math.PI * 2, false);
+            context.fill();
+            requestAnimationFrame(update);
+        }
+}
 
     
