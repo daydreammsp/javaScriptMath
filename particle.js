@@ -7,7 +7,9 @@ class particle{
         this.velocity.setLength(speed);
         this.velocity.setAngle(direction);
     }
-    
+    accelerate(accel){
+        this.velocity.addTo(accel)
+    }
     update(){
         this.position.addTo(this.velocity);
     }

@@ -3,25 +3,26 @@ window.onload = function(){
         context = canvas.getContext('2d');
         width = canvas.width = window.innerWidth,
         height = canvas.height = window.innerHeight,
-        p = new particle(100,height,10,-Math.PI /2),
-        accel = new vector(0.1,0.1);
+        particles = [],
+        numParticles = 100;
+        // p = new particle(100,100,3,Math.PI /6),
         
-        
+        for(let i = 0; i < numParticles; i++){
+            particles.push(new particle(width/2, height/2, Math.random() * 4 + 1, Math.random() * Math.PI * 2));
+        }
 
         update();
 
         function update(){
             context.clearRect(0,0,width,height);
-
-            p.accelerate(accel)
+            for(let i = 0; i < numParticles; i++){
+                let p = particles[i]
                 p.update();
 
                 context.beginPath();
                 context.arc(p.position.getX(), p.position.getY(), 10, 0, Math.PI * 2, false);
                 context.fill();
-            
+            }
             requestAnimationFrame(update);
         }
 }
-
-    
