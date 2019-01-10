@@ -9,7 +9,9 @@ class particle{
         this.velocity.setAngle(direction);
         this.gravity = new vector(0, grav || 0);
     }
-    
+    accelerate(accel){
+        this.velocity.addTo(accel)
+    }
     update(){
         this.velocity.addTo(this.gravity);
         this.position.addTo(this.velocity);

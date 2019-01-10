@@ -18,7 +18,7 @@ window.onload = function(){
             context.clearRect(0,0,width,height);
             for(let i = 0; i < numParticles; i++){
                 let p = particles[i];
-                
+                // p.accelerate(gravity);
                 p.update();
 
                 context.beginPath();
